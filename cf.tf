@@ -1,3 +1,4 @@
+#create s3 bucket 
 resource "aws_s3_bucket" "Prince" {
   bucket = "pps-prince"
   acl    = "private"
@@ -7,7 +8,7 @@ resource "aws_s3_bucket" "Prince" {
     Environment = "Dev"
   }
 }
-
+#create cloud front
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = "pps-prince.s3.amazonaws.com"
