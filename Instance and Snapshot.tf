@@ -1,6 +1,6 @@
 provider "aws" {
   region   = "ap-south-1"
-  profile  = "prince"
+  profile  = "jayesh"
 }
 
 #creating security group
@@ -55,7 +55,7 @@ resource "aws_instance" "myinstance" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/Prashant Saini/Downloads/mykey.pem")
+    private_key = file("C:/Users/jayes/Downloads/mykey.pem")
     host     = aws_instance.myinstance.public_ip 
  }
  provisioner "remote-exec" {
@@ -67,7 +67,7 @@ resource "aws_instance" "myinstance" {
   }
 
   tags = {
-     Name = "PrincePrashant"
+     Name = "jayesh"
   }
 }
 
@@ -115,7 +115,7 @@ depends_on = [
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/Prashant Saini/Downloads/mykey.pem")
+    private_key = file("C:/Users/jayes/Downloads/mykey.pem")
     host     = aws_instance.myinstance.public_ip
   }
 
@@ -124,7 +124,7 @@ provisioner "remote-exec" {
       "sudo mkfs.ext4  /dev/xvdh",
       "sudo mount  /dev/xvdh  /var/www/html",
       "sudo rm -rf /var/www/html/*",
-      "sudo git clone https://github.com/Prashantsaini25/workspace.git /var/www/html/"
+      "sudo git clone https://github.com/jayeshbaman/workspace.git /var/www/html/"
     ]
   }
 }
