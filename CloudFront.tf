@@ -1,28 +1,28 @@
 resource "aws_s3_bucket" "pps-prince" {
-bucket = "pps-prince1"
+bucket = "jayesh685"
 acl    = "private"
 tags = {
-Name        = "pps-prince"
+Name        = "jayesh"
 }
 }
 // Block Public Access
 resource "aws_s3_bucket_public_access_block" "s3Public" {
-bucket = "${aws_s3_bucket.pps-prince.id}"
+bucket = "${aws_s3_bucket.jayesh685.id}"
 block_public_acls   = true
 block_public_policy = true
 restrict_public_buckets = true
 }
 
 locals {
-s3_origin_id = "princes3"
+s3_origin_id = "jayesh6"
 }
 // Creating Origin Access Identity for CloudFront
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-comment = "pps-bucket"
+comment = "jayesh685"
 }
-resource "aws_cloudfront_distribution" "pps" {
+resource "aws_cloudfront_distribution" "jay" {
 origin {
-domain_name = "${aws_s3_bucket.pps-prince.bucket_regional_domain_name}"
+domain_name = "${aws_s3_bucket.jayesh685.bucket_regional_domain_name}"
 origin_id   = "${local.s3_origin_id}"
 s3_origin_config {
 
@@ -31,7 +31,7 @@ origin_access_identity = "${aws_cloudfront_origin_access_identity.origin_access_
 }
 enabled             = true
 is_ipv6_enabled     = true
-comment             = "pps-access"
+comment             = "jay-access"
 default_cache_behavior {
 allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
 cached_methods   = ["GET", "HEAD"]
